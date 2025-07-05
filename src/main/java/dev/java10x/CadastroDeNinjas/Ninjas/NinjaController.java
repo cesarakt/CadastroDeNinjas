@@ -11,6 +11,6 @@ public class NinjaController {
     @GetMapping("/helloworld")
 
     public String helloWorld(){
-        return "Hello, SpringBoot!";
+        return "Hello, World!";
     }
 }
