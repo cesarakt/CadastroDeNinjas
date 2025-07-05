@@ -17,10 +17,14 @@ public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "nome_missao")
     private String nome;
+
+    @Column(name = "dificuldade")
     private String dificuldade;
+
     //Uma missão para muitos ninjas
     @OneToMany(mappedBy = "missao")
     private List<NinjaModel> ninjas;
-
 }
