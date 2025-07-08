@@ -4,6 +4,7 @@ import jakarta.persistence.Id;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NinjaService {
@@ -21,10 +22,8 @@ public class NinjaService {
     }
 
     public NinjaModel listarNinjaById (Long id) {
-        if (!(ninjaRepository.existsById(id))) {
-          return null;
-        }
-        return ninjaRepository.findById(Long id);
+        Optional<NinjaModel> ninjaById = ninjaRepository.findById(id);
+        return ninjaById.orElse(null);
     }
 
 }
