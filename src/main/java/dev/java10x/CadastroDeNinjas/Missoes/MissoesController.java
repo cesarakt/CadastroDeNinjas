@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("missoes")
 public class MissoesController {
 
-    @GetMapping("/missoes")
+    @GetMapping("/listar")
     public String getMissoes () {
         return "todas as missões";
     }
 
-    @GetMapping("/missoesID")
+    @GetMapping("/listarID")
     public String getMissoesPorId () {
         return "Missão por ID";
     }
@@ -20,12 +20,12 @@ public class MissoesController {
         return "Missão criada com sucesso.";
     }
 
-    @PutMapping("/alterar")
+    @PutMapping("/alterarID")
     public String alterarMissao () {
         return "Missão alterada com sucesso.";
     }
 
-    @DeleteMapping("/deletar")
+    @DeleteMapping("/deletarID")
     public String deletarMissaoPorId () {
         return "missão deletada.";
     }
