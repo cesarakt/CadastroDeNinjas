@@ -21,5 +21,10 @@ public class MissoesService {
         return missaoRepository.findAll();
     }
 
+    //Criar missão
+    public MissoesModel criarMissoes (MissoesModel missoes) {
+        return missaoRepository.save(missoes);
+    }
+
 
 }
