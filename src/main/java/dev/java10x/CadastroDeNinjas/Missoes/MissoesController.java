@@ -1,13 +1,22 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
+import dev.java10x.CadastroDeNinjas.Ninjas.NinjaService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/missoes")
 public class MissoesController {
+    //Injeção de dependência do NinjaService
+    private MissoesService missaoService;
+
+    public MissoesController(MissoesService missaoService) {
+        this.missaoService = missaoService;
+    }
 
     @GetMapping("/listar")
-    public String getMissoes () {
-        return "todas as missões";
+    public List<MissoesModel> getMissoes () {
+        return missaoService.listarMissoes();
     }
 
     @GetMapping("/listarID")
