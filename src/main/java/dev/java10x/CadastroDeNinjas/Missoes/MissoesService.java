@@ -1,9 +1,9 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
-import dev.java10x.CadastroDeNinjas.Ninjas.NinjaModel;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MissoesService {
@@ -19,6 +19,12 @@ public class MissoesService {
     //Listar todos as missões
     public List<MissoesModel> listarMissoes () {
         return missaoRepository.findAll();
+    }
+
+    //Listar missão por id
+    public MissoesModel listarMissoesById (Long id) {
+        Optional<MissoesModel> missaoById = missaoRepository.findById(id);
+        return missaoById.orElse(null);
     }
 
     //Criar missão
