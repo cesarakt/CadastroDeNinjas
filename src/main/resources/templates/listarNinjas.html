@@ -1,0 +1,82 @@
+<!
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tabela de ninjas</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #2980b9;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #d1e7fd;
+}
+    </style>
+</head>
+<body>
+    <h1>Lista de ninjas</h1>
+    <a class="btn-adicionar" th:href="@{/ninjas/ui/adicionar}">Adicionar Novo Ninja</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Email</th>
+            <th>Rank</th>
+            <th>Missões</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ninja: ${ninjas}">
+            <td th:text="${ninja.id}"></td>
+            <td th:text="${ninja.nome}"></td>
+            <td th:text="${ninja.idade}"></td>
+            <td th:text="${ninja.email}"></td>
+            <td th:text="${ninja.rank}"></td>
+            <td>
+                <span th:if="${ninja.missao}">Nome: <span th:text="${ninja.missao.nome}"></span> Dificuldade: <span th:text="${ninja.missao.dificuldade}"></span></span>
+                <span th:if="${ninja.missao == null}">Sem missões</span>
+            </td>
+            <td>
+                <a th:href="@{/ninjas/ui/listar/{id}(id=${ninja.id})}">Ver Detalhes</a>
+                <a th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}">Alterar</a>
+                <a th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}">Deletar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

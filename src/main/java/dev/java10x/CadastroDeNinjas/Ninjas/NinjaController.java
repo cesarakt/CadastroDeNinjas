@@ -30,7 +30,7 @@ public class NinjaController {
                 .body("Ninja criado com sucesso: "+ novoNinja.getNome() + " (ID) : " + novoNinja.getId());
     }
 
-    //Procurar ninjas por ID (READ)
+    //Procurar ninjas (READ)
     @GetMapping("/listar")
     public ResponseEntity<List<NinjaDTO>> mostrarTodosNinjas() {
         List<NinjaDTO> ninjas = ninjaService.listarNinjas();
