@@ -39,7 +39,7 @@ public class MissoesService {
             missao.setId(id);
             return missaoRepository.save(missao);
         }
-        return ninja;
+        return missao;
     }
 
     //Deletar missão
