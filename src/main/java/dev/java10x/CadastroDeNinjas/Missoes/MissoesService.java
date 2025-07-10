@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class MissoesService {
 
     //@Autowired Annotations para Injeção de dependência
-    private MissoesRepository missaoRepository;
-    private MissoesMapper missoesMapper;
+    private final MissoesRepository missaoRepository;
+    private final MissoesMapper missoesMapper;
 
     //Injeção de dependência
     public MissoesService (MissoesRepository missaoRepository, MissoesMapper missoesMapper) {

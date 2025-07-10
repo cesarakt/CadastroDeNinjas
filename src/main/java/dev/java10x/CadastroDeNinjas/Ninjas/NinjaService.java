@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 @Service
 public class NinjaService {
     //@Autowired Annotations para Injeção de dependência
-    private NinjaRepository ninjaRepository;
-    private NinjaMapper ninjaMapper;
+    private final NinjaRepository ninjaRepository;
+    private final NinjaMapper ninjaMapper;
 
     //Injeção de dependência
     public NinjaService (NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {

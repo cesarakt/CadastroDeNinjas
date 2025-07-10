@@ -7,7 +7,7 @@ import java.util.List;
 @RequestMapping("/missoes")
 public class MissoesController {
     //Injeção de dependência do NinjaService
-    private MissoesService missaoService;
+    private final MissoesService missaoService;
 
     public MissoesController(MissoesService missaoService) {
         this.missaoService = missaoService;
