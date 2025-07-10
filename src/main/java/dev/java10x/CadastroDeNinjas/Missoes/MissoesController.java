@@ -1,5 +1,4 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
-import dev.java10x.CadastroDeNinjas.Ninjas.NinjaService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,22 +14,22 @@ public class MissoesController {
     }
 
     @GetMapping("/listar")
-    public List<MissoesModel> getMissoes () {
+    public List<MissoesDTO> getMissoes () {
         return missaoService.listarMissoes();
     }
 
     @GetMapping("/listar/{id}")
-    public MissoesModel getMissoesPorId (@PathVariable long id) {
+    public MissoesDTO getMissoesPorId (@PathVariable long id) {
         return missaoService.listarMissoesById(id);
     }
 
     @PostMapping("/criar")
-    public MissoesModel criarMissao (@RequestBody MissoesModel missoes) {
+    public MissoesDTO criarMissao (@RequestBody MissoesDTO missoes) {
         return missaoService.criarMissoes(missoes);
     }
 
     @PutMapping("/alterar/{id}")
-    public MissoesModel alterarMissao (@PathVariable long id,@RequestBody MissoesModel missao) {
+    public MissoesDTO alterarMissao (@PathVariable long id,@RequestBody MissoesDTO missao) {
         return missaoService.atualizarMissao(id,missao);
     }
 
