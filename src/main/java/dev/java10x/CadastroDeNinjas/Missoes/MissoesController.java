@@ -20,7 +20,7 @@ public class MissoesController {
     }
 
     @GetMapping("/listar/{id}")
-    public MissoesModel getMissoesPorId (@PathVariable Long id) {
+    public MissoesModel getMissoesPorId (@PathVariable long id) {
         return missaoService.listarMissoesById(id);
     }
 
@@ -30,12 +30,12 @@ public class MissoesController {
     }
 
     @PutMapping("/alterar/{id}")
-    public MissoesModel alterarMissao (@PathVariable Long id,@RequestBody MissoesModel missao) {
+    public MissoesModel alterarMissao (@PathVariable long id,@RequestBody MissoesModel missao) {
         return missaoService.atualizarMissao(id,missao);
     }
 
     @DeleteMapping("/deletar/{id}")
-    public void deletarMissaoPorId (@PathVariable Long id) {
+    public void deletarMissaoPorId (@PathVariable long id) {
         missaoService.deletarMissoes(id);
     }
 

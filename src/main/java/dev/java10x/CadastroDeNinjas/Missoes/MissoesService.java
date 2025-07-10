@@ -23,7 +23,7 @@ public class MissoesService {
     }
 
     //Listar missão por id
-    public MissoesModel listarMissoesById (Long id) {
+    public MissoesModel listarMissoesById (long id) {
         Optional<MissoesModel> missaoById = missaoRepository.findById(id);
         return missaoById.orElse(null);
     }
@@ -34,7 +34,7 @@ public class MissoesService {
     }
 
     //Atualizar o missao
-    public MissoesModel atualizarMissao(Long id, MissoesModel missao) {
+    public MissoesModel atualizarMissao(long id, MissoesModel missao) {
         if (missaoRepository.existsById(id)) {
             missao.setId(id);
             return missaoRepository.save(missao);

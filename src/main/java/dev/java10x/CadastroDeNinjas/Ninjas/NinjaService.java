@@ -10,10 +10,12 @@ import java.util.Optional;
 public class NinjaService {
     //@Autowired Annotations para Injeção de dependência
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
     //Injeção de dependência
-    public NinjaService (NinjaRepository ninjaRepository) {
+    public NinjaService (NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     //Listar todos os ninjas
@@ -22,18 +24,21 @@ public class NinjaService {
     }
 
     //Listar um ninja por id
-    public NinjaModel listarNinjaById (Long id) {
+    public NinjaModel listarNinjaById (long id) {
         Optional<NinjaModel> ninjaById = ninjaRepository.findById(id);
         return ninjaById.orElse(null);
     }
 
     //Criar um novo ninja
-    public NinjaModel criarNinja(NinjaModel ninja) {
-        return ninjaRepository.save(ninja);
+    //Utiliza o DTO com o Mapper para realizar mais uma camada de proteção de dados
+    public NinjaDTO criarNinja(NinjaDTO ninjaDTO) {
+        NinjaModel ninjaModel = ninjaMapper.map(ninjaDTO);
+        ninjaModel = ninjaRepository.save(ninjaModel);
+        return ninjaMapper.map(ninjaModel);
     }
 
     //Atualizar o ninja
-    public NinjaModel atualizarNinja(Long id, NinjaModel ninja) {
+    public NinjaModel atualizarNinja(long id, NinjaModel ninja) {
          if (ninjaRepository.existsById(id)) {
              ninja.setId(id);
              return ninjaRepository.save(ninja);
@@ -42,7 +47,7 @@ public class NinjaService {
     }
 
     //Deletar um ninja por id
-    public void deletarNinjaById(Long id) {
+    public void deletarNinjaById(long id) {
         ninjaRepository.deleteById(id);
     }
 }
